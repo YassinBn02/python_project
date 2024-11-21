@@ -13,5 +13,6 @@
 </head>
 <body class="container">
     <h1>Dear {{ request.session.name }} ,you have joined {{event.title}} successfully ! Thank you for being part of our community</h1>
+    <a href="/view_event/{{event.id}}/" class="btn btn-outline-success ">Back</a>
 </body>
 </html>

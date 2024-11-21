@@ -7,7 +7,11 @@ from django.core.files.storage import FileSystemStorage
 import datetime
 
 def landing(request):
-    return render(request,"landing.html")
+    events=Event.objects.all()
+    context={
+        "events":events
+    }
+    return render(request,"landing.html",context)
 
 def login(request):
     return render(request,"login.html")

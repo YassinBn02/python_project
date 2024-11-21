@@ -38,10 +38,10 @@
 <div class="aboutus" id="aboutus">
     <div class="aboutus_centered">
         <div class="title">
-    <h1>Our Mission & Vission </h1>
+    <h1>Our Mission & Vision </h1>
     <h4>With <span>GatherHab</span>, you can easily discover and join events tailored to your interests, profession, and goals.</h4>
     </div>
-    <video src="{% static 'images/Welcome to GatherHab  your ultimate platform for building powerful c_free.mp4' %}" autoplay muted controls></video>
+    <video src="{% static 'images/Welcome to GatherHab  your ultimate platform for building powerful c_free.mp4' %}" autoplay muted></video>
 </div>
 </div>
 
@@ -52,16 +52,13 @@
     <h4>Experience the energy of our unforgettable events!</h4>
     
     <div class="carousel-track">
-        <img src="{% static 'images/ecom360_conference_hosting_successful_event.webp' %}" alt="Image 1">
-        <img src="{% static 'images/Screenshot 2024-11-15 172613.png' %}" alt="Image 2">
-        <img src="{% static 'images/Screenshot 2024-11-15 172632.png' %}" alt="Image 3">
-        <img src="{% static 'images/Screenshot 2024-11-15 172647.png' %}" alt="Image 4">
-        <img src="{% static 'images/Screenshot 2024-11-15 172737.png' %}" alt="Image 5">
-        <img src="{% static 'images/ecom360_conference_hosting_successful_event.webp' %}" alt="Image 1">
-        <img src="{% static 'images/Screenshot 2024-11-15 172613.png' %}" alt="Image 2">
-        <img src="{% static 'images/Screenshot 2024-11-15 172632.png' %}" alt="Image 3">
-        <img src="{% static 'images/Screenshot 2024-11-15 172647.png' %}" alt="Image 4">
-        <img src="{% static 'images/Screenshot 2024-11-15 172737.png' %}" alt="Image 5">
+        {% for event in events  %}
+        <div>
+            <img  src="{% static 'images/'%}{{event.image}}" alt="{{event.image}}">
+            <h3>{{event.title}}</h3>
+        </div>
+        
+        {% endfor %}
     </div>
 </div>
 

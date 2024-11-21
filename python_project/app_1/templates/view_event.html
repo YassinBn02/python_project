@@ -200,7 +200,7 @@
                 <p>{{event.description}}</p>
             </div>
             </div>
-            {% if user not in event.members.all and event.total_number > members_numb %}
+            {% if user not in event.members.all and event.total_number > members_numb and event.start_date > date %}
             <a href="/join_event/{{event.id}}/" class="btn btn-danger"><button>Join Event</button></a>
                 {% endif %}
             <div class="commentinput">
