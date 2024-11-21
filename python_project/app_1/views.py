@@ -234,7 +234,7 @@ def update_event(request, event_id):
             event.image = image_path
         
         event.save()
-        return redirect('list_events')
+        return redirect('/dashboard')
     
     return render(request, 'update_event.html', {'event': event})
 
@@ -327,12 +327,15 @@ def dashboard(request):
     if "user_id" not in request.session:
         return redirect("/login")
     events=Event.objects.filter(status=1)
+    user=User.objects.get(id=request.session['user_id'])
+    if user.role==0:
+        return redirect("/admin")
     # events=Event.objects.all()
 
     # for e in events:
     #     print(e.favorites.all())
     
-    user=User.objects.get(id=request.session['user_id'])
+    
     context={
         "events":events,
         "user":user
