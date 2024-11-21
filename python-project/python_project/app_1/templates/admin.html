@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>GatherHub</title>
+    <style>
+        body{
+            background-color: #fff7ee;
+        }
+        h1,h4{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="d-flex justify-content-between mb-3">
+            <h1>Welcome, {{ request.session.name }}</h1>
+            <div class="d-flex justify-content-between gap-2">
+                <form action="/logout/" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-danger">LogOut</button>
+                </form>
+            </div>
+        </nav>
+        <h4>All Users</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in all_users %}
+                <tr>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td><a href="/block/{{user.id}}" class="btn btn-outline-danger">block</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Blocked Users</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in blocked_users %}
+                <tr>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td><a href="/block/{{user.id}}" class="btn btn-outline-danger">Unblock</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Pending Creator</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in pending_creator %}
+                <tr>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td><a href="/creator/{{user.id}}" class="btn btn-outline-danger">creator</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>All Events</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Organizer</th>
+                    <th>Location</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in all_events %}
+                <tr>
+                    <td>{{event.title}}</td>
+                    <td>{{event.user.first_name}}</td>
+                    <td>{{event.location}}</td>
+                    <td>{{event.category}}</td>
+                    <td><a href="/block_event/{{event.id}}/" class="btn btn-outline-danger">Block</a> | <a href="/view_event/{{event.id}}/" class="btn btn-outline-success">View Event</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Blocked Events</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Organizer</th>
+                    <th>Location</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in blocked_events %}
+                <tr>
+                    <td>{{event.title}}</td>
+                    <td>{{event.user.first_name}}</td>
+                    <td>{{event.location}}</td>
+                    <td>{{event.category}}</td>
+                    <td><a href="/block_event/{{event.id}}/" class="btn btn-outline-danger">Unblock</a> | <a href="/view_event/{{event.id}}/" class="btn btn-outline-success">View Event</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Pending Events</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Organizer</th>
+                    <th>Location</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in pending_events %}
+                <tr>
+                    <td>{{event.title}}</td>
+                    <td>{{event.user.first_name}}</td>
+                    <td>{{event.location}}</td>
+                    <td>{{event.category}}</td>
+                    <td><a href="/block_event/{{event.id}}/" class="btn btn-outline-danger">Block</a> | <a href="/view_event/{{event.id}}/" class="btn btn-outline-success">View Event</a> | <a href="/publish_event/{{event.id}}" class="btn btn-outline-primary">Publish</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Pending Comments</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>User name</th>
+                    <th>Event name</th>
+                    <th>Comment</th>
+                    <th>Rate</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for com in pending_comments %}
+                <tr>
+                    <td>{{com.user.first_name}} {{com.user.last_name}}</td>
+                    <td>{{com.event.title}}</td>
+                    <td>{{com.comment}}</td>
+                    <td>{{com.rate}}</td>
+                    <td><a href="/block_comment/{{com.id}}/" class="btn btn-outline-danger">Block</a>  | <a href="/publish_comment/{{com.id}}" class="btn btn-outline-primary">publish</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>All Comments</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>User name</th>
+                    <th>Event name</th>
+                    <th>Comment</th>
+                    <th>Rate</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for com in all_comments %}
+                <tr>
+                    <td>{{com.user.first_name}} {{com.user.last_name}}</td>
+                    <td>{{com.event.title}}</td>
+                    <td>{{com.comment}}</td>
+                    <td>{{com.rate}}</td>
+                    <td><a href="/block_comment/{{com.id}}/" class="btn btn-outline-danger">Block</a><td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Blocked Comments</h4>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>User name</th>
+                    <th>Event name</th>
+                    <th>Comment</th>
+                    <th>Rate</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for com in blocked_comments %}
+                <tr>
+                    <td>{{com.user.first_name}} {{com.user.last_name}}</td>
+                    <td>{{com.event.title}}</td>
+                    <td>{{com.comment}}</td>
+                    <td>{{com.rate}}</td>
+                    <td><a href="/block_comment/{{com.id}}/" class="btn btn-outline-danger">UnBlock</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

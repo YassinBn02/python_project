@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GatherHub</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container registration-container">
+        <div class="row">
+            <!-- Left Column: Registration Form -->
+            <div class="col-lg-5 col-md-6 registration-box">
+                <div class="logo">GATHERHUB</div>
+                <h2>Sign up and join us</h2>
+                <form action="/add_user/" method="post">
+                    {% csrf_token %}
+                    {% if messages %}    
+                            {% for message in messages %}    
+                                <div class="alert alert-warning">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    <div class="form-group">
+                        <label for="first-name" class="form-label">Enter your first name:</label>
+                        <input type="text" class="form-control" id="first-name" name="first-name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name" class="form-label">Enter your last name:</label>
+                        <input type="text" class="form-control" id="last-name" name="last-name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="birth" class="form-label">Birthdate:</label>
+                        <input type="date" name="birth" id="birth" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Enter your email address:</label>
+                        <input type="text" class="form-control" id="email" name="email" >
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" >
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password" class="form-label">Confirm your password:</label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" >
+                    </div>
+                    <div class="button"><button type="submit" class="btn btn-signup btn-block">Sign up</button></div>
+                </form>
+                <p class="login-link">You already have an account? <a href="/login">LogIn Now</a></p>
+                <a href="/">Back Home</a>
+            </div>
+        
+            <!-- Right Column: Image -->
+            <div class="col-lg-7 col-md-6 image-section d-none d-md-block">
+                <img src="{% static 'images/registration_image.jpg' %}" alt="registration_image">
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

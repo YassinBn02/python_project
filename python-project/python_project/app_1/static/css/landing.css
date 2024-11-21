@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #ffff;
+}
+.nav{
+    position: absolute;
+    top: 20px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 95%;
+    padding: 0px 10px ;
+}
+.nav .logo{
+    width: 200px;
+    padding-left:20px;
+}
+
+.nav ul{
+    list-style-type:none;
+    display: inline-block;
+    margin-left: 10px;
+    display: flex;
+    gap:40px;
+    
+}
+li{
+    font-size:25px ;
+    color: aliceblue;
+
+}
+.nav h1{
+    color: #FFF6F4;
+    
+}
+span{
+    color: #FC8F54;
+}
+.video-container{
+    position: relative;
+    z-index: -1;
+    margin-bottom: 50px;
+
+
+}
+.video-container img{
+    width: 100%;
+}
+.text{
+    
+    width: 800px;
+    position: absolute;
+    top:400px;
+    color: #FFF6F4;
+    font-size: 40px;
+    margin-left: 90px;
+    background-color: rgba(0, 0, 0, 0.5); /* Arrière-plan semi-transparent */
+    padding: 30px;
+    border-radius: 15px;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre portée */
+}
+button{
+    padding:10px;
+    border-radius: 15px;
+    border: none;
+    background-color: #FFC6A5;
+    color: #F6B17A;
+    font-size:20px ;
+}
+/* ----------------------------------------about us------------------------------------------------------- */
+.aboutus{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 100px;
+    /* height: 100vh; Full viewport height */
+}
+.aboutus_centered{
+    background-color: #E2DAD6;
+    border-radius: 15px;
+    width: 1400px;
+}
+
+.title h1{
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 100px;
+    color: #F6B17A;
+}
+video{
+    padding-bottom:80px;
+    padding-top:80px;
+    width: 1000px;
+}
+
+/* -------------------------------------------------------Events ------------------------------------------------------------------------- */
+
+.carousel {
+    width: 100%; 
+    overflow: hidden;
+    position: relative;
+    height: 800px; 
+    background-color:#E2DAD6;
+    margin: 100px 0px;
+    text-align: center;
+}
+
+.carousel-track {
+    padding: 150px;
+    display: flex;
+    animation: scroll 16s linear infinite;
+}
+
+.carousel-track img {
+    flex-shrink: 0;
+    width: auto;
+    height: 200px;
+    margin:.0px 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px #FFF6F4;
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); 
+}}
+.carousel h1{
+    color: #F6B17A;
+    font-size: 100px;
+    padding:50px ;
+}
+.carousel h4{
+    color: #FFF;
+    font-size: 30px;
+}
+
+/* ------------------------------------------------Contact---------------------------------------------------------------------- */
+
+.contact{
+    background-color: #E2DAD6;
+    border-top-left-radius: 180px;
+    height: 455px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 50px;
+    /* padding: 80px 300px 10px 10px; */
+
+    /* gap: 200px; */
+}
+.contact h1{
+    padding-top: 50px;
+    font-size: 100px;
+    color: #F6B17A;
+}
+svg{
+/* padding-top: 340px; */
+/* padding-left: 30px; */
+width: 30px;
+height: 30px;
+}
+.contact ul li {
+    color :black;
+    list-style-type: none;
+    font-size: 30px;
+    line-height: 50px;
+
+
+}
+
+

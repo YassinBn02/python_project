@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GatherHub</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="container login-container">
+        <div class="row">
+            <!-- Left Column: Image -->
+            <div class="col-lg-6 col-md-6 image-section d-none d-md-block">
+                <img src="{% static 'images/login_image.jpg'%}" alt="login_image">
+            </div>
+            <!-- Right Column: Login Form -->
+            <div class="col-lg-5 col-md-5 login-box">
+                <div class="logo">GATHERHUB</div>
+                <h2>Welcome back!</h2>
+                <p>Enter your credentials to log in</p>
+                <form action="/log_user/" method="post">
+                    {% csrf_token %}
+                        {% if messages %}    
+                            {% for message in messages %}    
+                                <div class="alert alert-warning">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Enter your email:</label>
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Enter your password:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-login btn-block">Log In</button>
+                </form>
+                <p class="signup-link">Don’t have an account? <a href="/register">Sign up now</a></p>
+                <a href="/">Back Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

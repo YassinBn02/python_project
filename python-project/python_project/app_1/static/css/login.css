@@ -1,0 +1,65 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-container {
+    background-color:#FFF7F2;
+    /* padding: 30px; */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 1400px; /* Make the container wider */
+    width: 100%;
+}
+.login-box {
+    padding: 20px;
+    text-align: center;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.logo {
+    font-size: 36px;
+    color: #ff884d; /* Orange color for the logo */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.form-label {
+    text-align: left;
+    font-size: 16px;
+    color:blue;
+}
+.btn-login {
+    background-color: #ff884d; /* Orange color for the login button */
+    color: blue;
+    font-size: 18px;
+}
+.btn-login:hover {
+    background-color: #e5733d;
+}
+.signup-link {
+    font-size: 14px;
+    color:blue;
+    margin-top: 15px;
+}
+.signup-link a {
+    color: #ff884d;
+    text-decoration: none;
+}
+.signup-link a:hover {
+    text-decoration: underline;
+}
+.image-section img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+p{
+    color: blue;
+}
+h2{
+    color: blue;
+}
+input{
+    box-shadow: 2px 2px 2px rgb(199, 197, 197);
+}

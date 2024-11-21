@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>GatherHub</title>
+    <style>
+        h1{
+            color: rgb(5, 189, 5);
+        }
+    </style>
+</head>
+<body class="container">
+    <h1>Dear {{ request.session.name }} ,you have joined {{event.title}} successfully ! Thank you for being part of our community</h1>
+</body>
+</html>

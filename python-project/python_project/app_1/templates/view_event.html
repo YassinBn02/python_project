@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            gap: 50px;
+        }
+        .location{
+            display: flex;
+            gap:10px;
+            align-items: center;
+        }
+        .date{
+            display: flex;
+            gap:10px;
+            align-items: center;
+        }
+        .category{
+            display: flex;
+            gap:10px;
+            align-items: center;
+        }
+        .number{
+            display: flex;
+            gap:10px;
+            align-items: center;
+        }
+        .discription{
+            display: flex;
+            gap:10px;
+            align-items: center;
+        }
+        .all_info{
+            display:flex;
+            flex-direction: column;
+            gap: 30px;
+        } */
+        /* .......................................................comment section................................................. */
+         .head{
+            text-transform: uppercase;
+            margin-bottom: 20px;
+
+        }
+        .text{
+            margin:10px 0;
+            font-family: sans-serif;
+            font-size: 0.9em;
+        }
+        .commentbox{
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+        }
+        .commentbox > img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+            object-position: center;
+
+        }
+        .content{
+            width:100%
+        }
+        .user{
+            border: none;
+            outline: none;
+            margin: 5px 0;
+            color: #808080;
+            margin-left:20px;
+            padding:10px;
+        }
+        .commentinput > input{ 
+            border: none;
+            padding:10px;
+            padding-left:0px;
+            outline: none;
+            border-bottom: 2px solid blue;
+            margin-bottom: 10px;
+            width: 95%;
+
+        }
+        .buttons{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #808080;
+        }
+        .buttons button {
+            padding: 5px 10px;
+            background-color: lightgray;
+            text-transform: uppercase;
+            border:none;
+            outline: none;
+            border-radius: 3px;
+            cursor: pointer;
+        } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="/python_project/app_1/static/images/registration_image.jpg" alt="">
+        </div>
+        <div class="info">
+            <h1>Event Name</h1>
+            <div class="all_info">
+            <div class="sub_inf">
+                <div class="location">
+                    icon 
+                    <h3>location</h3>
+                </div>
+                <div class="date">
+                    icon 
+                    <h3>date</h3>
+                </div>
+                <div class="category">
+                    icon 
+                    <h3>category</h3>
+                </div>
+                <div class="number">
+                    icon 
+                    <h3>number</h3>
+                </div>
+                
+            </div>
+            <div class="discription">
+                icon
+                
+                <p>azertyuiopqsdfghjklwxcvbn,;:</p>
+            </div>
+            </div>
+            
+            <div class="comment">
+
+            </div>
+            <div class="comment_section">
+            <div class="head"><h1>Post A comment</h1></div>
+            <div><span id="comment">0</span>Comments</div>
+            <div class="text"><p>We are happy to hear from you</p></div>
+            <div class="comments"></div>
+            <div class="commentbox">
+                <img src="/python_project/app_1/static/images/blank-profile-picture-973460_1280 (1).webp" alt="">
+                <div class="content">
+                    <div class="commentinput">
+                        <form action="/create/comment/{{event.id}}/" method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Enter comment" class="usercomment" name="comment" >
+                        {% if user in event.members.all and event.start_date < date %}
+                        <select class="form-select" aria-label="Default select example" name="rate">
+                            <option selected>Rate this Event </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        {% else %}
+                        <input type="hidden" name="rate" value="0">
+                        {% endif %}
+                        <button type="submit">publish</button>
+                        </form>
+                        </div>
+                    
+
+                    </div>
+                </div>
+                
+
+            </div>
+            </div>
+            {% if user not in event.members.all and event.total_number > members_numb %}
+            <a href="/join_event/{{event.id}}/" class="btn btn-danger">Join Event</a>
+            {% endif %}
+            <ul>
+                {% for com in comments %}
+                <li>
+                    {{com.comment}} {% if com.rate != 0 %} {{com.rate}} {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+    
+    <div>
+        
+    </div>
+
+
+
+</body>
+</html>
